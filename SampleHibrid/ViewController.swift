@@ -10,13 +10,32 @@ import WebKit
 
 class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
 
-    @IBOutlet weak var webView: WKWebView!
+    var webView: WKWebView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let url = URL(string: "https://www.naver.com")
-        let request = URLRequest(url: url!)
+//        let config = URLSessionConfiguration.default
+//        config.httpAdditionalHeaders = ["User-Agent"]
+        
+        let url = URL(string: "https://eplandev.heungkuklife.co.kr")
+//        if (enabled) {
+//            newUserAgent = webSettings.getUserAgentString().replace("Mobile", "eliboM").replace("Android", "diordnA");
+//        }
+//        else {
+//            newUserAgent = webSettings.getUserAgentString().replace("eliboM", "Mobile").replace("diordnA", "Android");
+//        }
+        
+        var request = URLRequest(url: url!)
+        print("start")
+
+//        webView.evaluateJavaScript("navigator.userAgent"){ [weak webView] (result, error) in
+//            if let webView = webView, let userAgent = result as? String {
+//                webView.customUserAgent = userAgent + "/diordnA"
+//            }
+//
+//        }
+        
         webView.load(request)
     }
 
@@ -29,7 +48,7 @@ class ViewController: UIViewController, WKUIDelegate, WKNavigationDelegate {
         webView.navigationDelegate = self
         
         self.view = self.webView
-        
+//
     }
     
     override func didReceiveMemoryWarning() {
